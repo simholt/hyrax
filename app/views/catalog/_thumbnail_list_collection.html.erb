@@ -1,3 +1,9 @@
 <div class="col-md-2">
-  <span class="<%= Hyrax::ModelIcon.css_class_for(Collection) %> collection-icon-search" aria-hidden="true"></span>
+  <% collection_presenter = Hyrax::CollectionPresenter.new(document, current_ability) %>
+  <% if (collection_presenter.thumbnail_path == nil) %>
+    <span class="<%= Hyrax::ModelIcon.css_class_for(Collection) %> collection-icon-search" aria-hidden="true"></span>
+  <% else %>
+    <%= image_tag(collection_presenter.thumbnail_path) %>
+  <% end %>
 </div>
+
